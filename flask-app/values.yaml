@@ -6,5 +6,19 @@ image:
   tag: "v1.0.0"
 
 service:
+  name: flask-service
   type: ClusterIP
   port: 80
+
+gateway:
+  enabled: true
+  className: "traefik"
+
+  ports:
+    http: 80
+    https: 443
+
+  tls:
+    enabled: false
+    secretName: "app-tls-cert"
+  host: "app.local"
